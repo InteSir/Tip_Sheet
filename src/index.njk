@@ -1,0 +1,130 @@
+---
+layout: layouts/base.njk
+isHome: true
+title: "The Tip Sheet"
+description: "Nail inspiration by shape, length, color and finish, plus practical press-on help for sizing, prep, lifting and removal."
+permalink: /
+bodyClass: home
+---
+{#- Homepage order (Intesar, 26 Nov 2026): hero collection → Start here → New this week →
+    Browse → Featured collections → Problem Solver → Complete the Vibe → Home & Decor → follow -#}
+{%- set featured = collections.articles | findUrl(site.homepage.heroUrl) or (collections.articles | bySection("nail-ideas") | first) -%}
+{%- set solver = collections.articles | findUrl("/press-on-nails/problem-solver/") -%}
+{%- set decor = collections.articles | bySection("home-decor") | first -%}
+
+<section class="ed-hero wrap" aria-labelledby="hero-title">
+  <div class="ed-hero__grid">
+    <a class="ed-hero__media" href="{{ featured.url }}" tabindex="-1" aria-hidden="true">{% img featured.data.hero, "(min-width: 1024px) 640px, 100vw", "ratio-1", "eager", [480, 800, 1200] %}</a>
+    <div class="ed-hero__text">
+      <p class="label">The current edit · {{ featured.data.looks.length }} looks</p>
+      <h1 class="ed-hero__title" id="hero-title">{{ featured.data.headline }} <em>{{ featured.data.headlineAccent }}</em></h1>
+      <p class="ed-hero__dek">{{ featured.data.description }}</p>
+      {% if featured.data.groups %}
+      <ol class="ed-hero__toc">
+        {%- for g in featured.data.groups %}<li><a href="{{ featured.url }}#{{ g.id }}">{{ g.title }}</a></li>{% endfor %}
+      </ol>
+      {% endif %}
+      <div class="btn-row"><a class="btn" href="{{ featured.url }}">Read the edit</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap start-here" aria-labelledby="start-title">
+  <div class="section-head"><h2 class="h2" id="start-title">Start here</h2></div>
+  <div class="start-grid">
+    {%- set starts = [
+      { n: "01", label: "Inspiration", title: "Find your next look", text: "Looks by shape, finish and difficulty, with three ways to get each one.", url: "/nail-ideas/" },
+      { n: "02", label: "Press-ons", title: "Choose and wear press-ons", text: "Glue or tabs, fit, finishes, and what a set should look like up close.", url: "/press-on-nails/" },
+      { n: "03", label: "Beginners", title: "Your first set, done right", text: "A printable prep checklist and sizing chart, then the Problem Solver.", url: "/press-on-nails/prep-checklist/" }
+    ] %}
+    {%- for s in starts %}
+    <a class="start-card ed-link" href="{{ s.url }}"><span class="start-card__n ed-link__idx">{{ s.n }}</span><span class="label">{{ s.label }}</span><span class="start-card__t ed-link__title"><span class="ed-link__line">{{ s.title }}</span></span><span class="start-card__d">{{ s.text }}</span><span class="ed-link__arrow" aria-hidden="true">→</span></a>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="section wrap new-edit" aria-labelledby="new-title">
+  <div class="section-head">
+    <div><p class="label">The latest edit</p><h2 class="h2" id="new-title">New this week</h2></div>
+    <a class="link-arrow" href="{{ featured.url }}">All {{ featured.data.looks.length }} New Year's looks</a>
+  </div>
+  <div class="new-edit__grid">
+    {% asyncEach f in site.homepage.newThisWeek %}
+    <a class="ne ne--{{ f.layout }} ed-link" href="{{ f.url }}">
+      <span class="ne__media">{% img f.image, ("(min-width: 1024px) 640px, 100vw" if f.layout == "lead" else "(min-width: 1024px) 420px, (min-width: 640px) 50vw, 100vw"), "no-chip", "lazy", [400, 800, 1200] %}</span>
+      <span class="ne__text">
+        <span class="label">{{ f.label }}</span>
+        <span class="ne__title ed-link__title"><span class="ed-link__line">{{ f.title }}</span></span>
+        <span class="ne__dek">{{ f.text }}</span>
+        {% if f.cta %}<span class="ne__cta">{{ f.cta }} <span class="ed-link__arrow" aria-hidden="true">→</span></span>{% endif %}
+      </span>
+    </a>
+    {% endeach %}
+  </div>
+  <p class="ai-caption new-edit__note">All images in this edit are AI-generated inspiration, not product photos. <a href="/how-we-use-ai-images/">About our images</a></p>
+</section>
+
+<section class="section wrap browse-block" aria-labelledby="browse-title">
+  <div class="section-head">
+    <h2 class="h2" id="browse-title">Browse by shape, color, length and finish</h2>
+    <a class="link-arrow" href="/browse/">All filters</a>
+  </div>
+  <ul class="shape-row">
+    {% set facetKey = "shape" %}
+    {% asyncEach t in taxonomy.shape %}{% shapeTile t, facetKey %}{% endeach %}
+  </ul>
+  <div class="browse-rows">
+    <div><p class="label">Color</p><ul class="chips">{% for t in taxonomy.colour %}<li><a class="chip chip--swatch" href="/browse/colour/{{ t.slug }}/"><span class="dot" style="background:{{ t.swatch }}" aria-hidden="true"></span>{{ t.label }}</a></li>{% endfor %}</ul></div>
+    <div><p class="label">Finish</p><ul class="chips">{% for t in taxonomy.finish %}<li><a class="chip" href="/browse/finish/{{ t.slug }}/">{{ t.label }}</a></li>{% endfor %}</ul></div>
+    <div><p class="label">Length</p><ul class="chips">{% for t in taxonomy.length %}<li><a class="chip" href="/browse/length/{{ t.slug }}/">{{ t.label }}</a></li>{% endfor %}</ul></div>
+  </div>
+</section>
+
+<section class="section wrap" aria-labelledby="coll-title">
+  <div class="section-head">
+    <h2 class="h2" id="coll-title">Featured collections</h2>
+    <a class="link-arrow" href="/nail-ideas/">All nail ideas</a>
+  </div>
+  <div class="card-grid card-grid--3">
+    {% asyncEach a in collections.articles | bySection("nail-ideas") | notUrl(featured.url) | limit(3) %}{% articleCard a %}{% endeach %}
+  </div>
+</section>
+
+{% if solver %}
+<section class="solver-band" aria-labelledby="solver-title">
+  <div class="wrap solver-band__grid">
+    <div>
+      <p class="label">Press-On Problem Solver</p>
+      <h2 class="h2" id="solver-title">Popping off by day two? <em>Start here.</em></h2>
+      <p>It's usually prep or fit, not the glue. Pick your problem and get the likely cause and the fix.</p>
+      <a class="btn" href="{{ solver.url }}">Open the Problem Solver</a>
+    </div>
+    <ul class="solver-list">
+      {%- for pr in solver.data.problems | limit(6) %}<li><a href="{{ solver.url }}#{{ pr.id }}">{{ pr.symptom }}<span aria-hidden="true"> →</span></a></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+<section class="section wrap" aria-labelledby="vibe-title">
+  <div class="section-head"><h2 class="h2" id="vibe-title">Complete the vibe</h2><p class="section-intro">Nails and small-space decor in the same palette.</p></div>
+  <div class="vibe-grid">
+    {% asyncEach v in site.homepage.vibe | limit(3) %}
+    <a class="vibe-card" href="{{ v.url }}">{% img v.image, "(min-width: 1024px) 300px, 45vw", "ratio-1", "lazy", [400, 800] %}<span class="vibe-card__t">{{ v.title }}</span><span class="vibe-card__d">{{ v.text }}</span></a>
+    {% endeach %}
+  </div>
+</section>
+
+{% if decor %}
+<section class="section wrap" aria-labelledby="home-decor-title">
+  <div class="feature-band">
+    {% img decor.data.hero, "(min-width: 1024px) 600px, 100vw", "", "lazy", [480, 800, 1200] %}
+    <div class="feature-band__text">
+      <p class="label">Home &amp; Decor</p>
+      <h2 class="h2" id="home-decor-title">{{ decor.data.headline }} <em>{{ decor.data.headlineAccent }}</em></h2>
+      <p>{{ decor.data.description }}</p>
+      <a class="link-arrow" href="/home-decor/">Explore Home &amp; Decor</a>
+    </div>
+  </div>
+</section>
+{% endif %}

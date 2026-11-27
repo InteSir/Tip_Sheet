@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+title: Saved Looks
+description: "The nail looks you've saved on The Tip Sheet. Saved looks are stored only in this browser on this device."
+permalink: /saved/
+noindex: true
+---
+<header class="page-head wrap">
+  <p class="label">Your list</p>
+  <h1 class="h1">Saved <em>looks</em></h1>
+  <p class="lede">Tap <strong>Save</strong> on any look and it appears here. Your list is stored only in this browser on this device. Nothing is sent to us, and there's no account.</p>
+</header>
+<section class="wrap" aria-live="polite">
+  <div class="card-grid card-grid--4" data-saved-list></div>
+  <p class="empty-state" data-saved-empty>You haven't saved any looks yet. <a href="/nail-ideas/">Find some nail ideas</a>.</p>
+  <noscript><p class="empty-state">Saving looks needs JavaScript turned on.</p></noscript>
+  <p class="saved-tools"><button class="btn btn--outline btn--small" type="button" data-saved-clear hidden>Clear saved looks</button></p>
+</section>
+<div class="section"></div>

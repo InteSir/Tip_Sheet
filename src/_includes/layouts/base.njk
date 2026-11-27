@@ -1,0 +1,57 @@
+{%- set pageTitle = (title + " | " + site.name) if title and not isHome else (site.name + " | Nail Ideas & Press-On Nails") -%}
+{%- set pageDesc = description or site.description -%}
+{%- set canonical = page.url | absUrl -%}
+<!doctype html>
+<html lang="{{ site.language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if site.pinterestVerify %}<meta name="p:domain_verify" content="{{ site.pinterestVerify }}">{% endif %}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDesc }}">
+  <link rel="canonical" href="{{ canonical }}">
+  {% if noindex or (bp and bp.noindex) %}<meta name="robots" content="noindex">{% endif %}
+  <meta name="theme-color" content="#FAF6F1">
+
+  {# Fonts are self-hosted (no Google request). Preload the two used above the fold. #}
+  <link rel="preload" href="/assets/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  {% if pagefindUI %}<link rel="stylesheet" href="/pagefind/pagefind-ui.css"><script src="/pagefind/pagefind-ui.js" defer></script>{% endif %}
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/brand/favicon-apple-touch-180.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  {# Open Graph / social sharing #}
+  {%- set shareImage = ogImage or "/assets/og/default.jpg" -%}
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title or site.name }}">
+  <meta property="og:description" content="{{ pageDesc }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:type" content="{{ 'article' if layout == 'layouts/article.njk' else 'website' }}">
+  <meta property="og:locale" content="{{ site.locale }}">
+  <meta property="og:image" content="{{ shareImage | absUrl }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  {% if layout == 'layouts/article.njk' %}
+  <meta property="article:published_time" content="{{ page.date | isoDate }}">
+  {% if updated %}<meta property="article:modified_time" content="{{ updated | isoDate }}">{% endif %}
+  {% endif %}
+  {% block jsonld %}
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":{{ site.name | json | safe }},"url":{{ site.url | json | safe }},"potentialAction":{"@type":"SearchAction","target":"{{ site.url }}/search/?q={query}","query-input":"required name=query"}}</script>
+  {% endblock %}
+  <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="/feed.xml">
+  <script src="/assets/js/site.js" defer></script>
+</head>
+<body class="{{ bodyClass }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include "partials/header.njk" %}
+  <main id="main" tabindex="-1">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+</body>
+</html>

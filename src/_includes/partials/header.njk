@@ -1,0 +1,63 @@
+<div class="top-strip">
+  <a href="{{ site.announcement.url }}">{{ site.announcement.text }} <span aria-hidden="true">→</span></a>
+</div>
+<header class="site-header" data-header>
+  <div class="site-header__inner wrap">
+    <button class="icon-btn menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" data-menu-toggle>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <span class="visually-hidden">Open menu</span>
+    </button>
+    <nav class="primary-nav primary-nav--left" aria-label="Primary">
+      <ul>
+        {%- for item in site.nav %}
+        <li><a href="{{ item.url }}"{% if page.url.startsWith(item.url) %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    <a class="site-logo" href="/" aria-label="{{ site.name }}, home">
+      <img src="/assets/brand/logo-primary.svg" alt="{{ site.name }}" width="488" height="128">
+    </a>
+    <div class="header-tools">
+      <a class="tool-link tool-link--text" href="/browse/">Browse</a>
+      <a class="icon-btn" href="/search/" aria-label="Search">
+        <svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </a>
+      <a class="icon-btn saved-link" href="/saved/" aria-label="Saved looks">
+        <svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+        <span class="saved-count" data-saved-count hidden></span>
+      </a>
+    </div>
+  </div>
+  <nav class="chip-nav" aria-label="Sections">
+    <ul class="chip-nav__list wrap">
+      {%- for item in site.chips %}
+      <li><a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+      {%- endfor %}
+    </ul>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu" hidden data-menu>
+    <nav aria-label="Mobile">
+      <ul class="mobile-menu__links">
+        {%- for item in site.nav %}
+        <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+        {%- endfor %}
+      </ul>
+      <ul class="mobile-menu__sub">
+        <li><a href="/press-on-nails/problem-solver/">Press-On Problem Solver</a></li>
+        <li><a href="/press-on-nails/sizing/">Sizing guide &amp; printable chart</a></li>
+        <li><a href="/press-on-nails/prep-checklist/">Prep checklist</a></li>
+        <li><a href="/browse/">Browse all looks</a></li>
+        <li><a href="/saved/">Saved looks</a></li>
+        <li><a href="/search/">Search</a></li>
+      </ul>
+      <p class="label">Browse by finish</p>
+      <ul class="chips">
+        {%- for t in taxonomy.finish %}<li><a class="chip" href="/browse/finish/{{ t.slug }}/">{{ t.label }}</a></li>{% endfor %}
+      </ul>
+      <p class="label">Browse by shape</p>
+      <ul class="chips">
+        {%- for t in taxonomy.shape %}<li><a class="chip" href="/browse/shape/{{ t.slug }}/">{{ t.label }}</a></li>{% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

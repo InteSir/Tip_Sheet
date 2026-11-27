@@ -1,0 +1,125 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: sectionPages
+  size: 1
+  alias: sp
+permalink: "{{ sp.url }}"
+eleventyComputed:
+  title: "{{ sp.title }}"
+  description: "{{ sp.description }}"
+  bodyClass: "section-{{ sp.key }} hub"
+sectionPages:
+  - key: nail-ideas
+    url: /nail-ideas/
+    title: Nail Ideas
+    heading: "Nail ideas"
+    accent: "worth saving"
+    description: "Nail inspiration by occasion, color, shape, length and finish. Every Look Card shows the recipe, the difficulty and three ways to get it: press-on, DIY or salon."
+    intro: "Every idea here is a Look Card: the shape, length and finish, approximate shades, how hard it is, who it suits, and how to get it as a press-on, a DIY manicure or at a salon. Images are AI-generated inspiration, never product photos."
+    start:
+      - { label: "This week", title: "New Year's Eve nails", url: "/nail-ideas/new-years-eve-nails/" }
+      - { label: "Short nails", title: "Short nail ideas", url: "/browse/length/short/" }
+      - { label: "Finish", title: "Chrome & cat-eye", url: "/browse/finish/cat-eye/" }
+    faq:
+      - q: "What do Press-on, DIY and Salon mean?"
+        a: "They show the easiest way to get each look. Press-on means the design is realistic as a ready-made set. DIY means you can paint it at home with basic tools. Salon means it needs a nail tech's skills or kit, such as hand-painted art or gel techniques."
+      - q: "Are the nail photos real?"
+        a: "No. They are AI-generated inspiration images of a design idea, labelled on every look. They are never used to show what a product looks like."
+      - q: "How do I keep looks I like?"
+        a: "Tap Save on any look. It's stored only in your browser on this device, and you'll find it under Saved."
+  - key: press-ons
+    url: /press-on-nails/
+    title: Press-On Hub
+    heading: "The Press-On Hub"
+    accent: "fit, prep and fixes"
+    description: "Practical press-on nail help: the Problem Solver for lifting and pop-offs, a sizing guide with printable chart, a prep checklist, and how to choose a set."
+    intro: "Most press-on problems come down to prep and fit, not the glue. Start with the Problem Solver if something's already gone wrong, or the sizing guide and prep checklist before your next set. No invented wear-time promises: where sources disagree, we show you both sides."
+    start:
+      - { label: "Fix it", title: "Press-On Problem Solver", url: "/press-on-nails/problem-solver/" }
+      - { label: "Fit", title: "Sizing guide + printable chart", url: "/press-on-nails/sizing/" }
+      - { label: "Prep", title: "The prep checklist", url: "/press-on-nails/prep-checklist/" }
+    faq:
+      - q: "Glue or adhesive tabs?"
+        a: "Tabs are gentler and easy to remove but usually last a short time; brush-on glue lasts longer but takes more care to remove. The Problem Solver explains when each makes sense."
+      - q: "Which press-on brand is best?"
+        a: "There isn't one best brand for everyone. Fit depends on your nail-bed width and curve, whether you use glue or tabs, and how long you want to wear the set. Our guide to choosing press-ons explains what to look for."
+  - key: home-decor
+    url: /home-decor/
+    title: Home & Decor
+    heading: "Home & Decor"
+    accent: "small-space style"
+    description: "Renter-friendly, small-space seasonal decor that matches our nail palettes: garlands, tabletop trees and cozy corners."
+    intro: "A small side of The Tip Sheet: renter-friendly, small-space decor in the same palettes as our nail edits. Each idea links back to the nail looks that match it."
+    start: []
+    faq: []
+---
+{%- set list = collections.articles | bySection(sp.key) -%}
+{%- set solver = collections.articles | findUrl("/press-on-nails/problem-solver/") -%}
+<header class="page-head wrap">
+  <p class="label">{{ site.name }}</p>
+  <h1 class="h1">{{ sp.heading }} <em>{{ sp.accent }}</em></h1>
+  <p class="lede">{{ sp.intro }}</p>
+</header>
+
+{% if sp.start.length %}
+<section class="wrap start-here" aria-labelledby="hub-start">
+  <h2 class="visually-hidden" id="hub-start">Start here</h2>
+  <div class="start-grid">
+    {%- for s in sp.start %}<a class="start-card ed-link" href="{{ s.url }}"><span class="start-card__n ed-link__idx">0{{ loop.index }}</span><span class="label">{{ s.label }}</span><span class="start-card__t ed-link__title"><span class="ed-link__line">{{ s.title }}</span></span><span class="ed-link__arrow" aria-hidden="true">→</span></a>{% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if sp.key == "nail-ideas" %}
+<section class="browse-band" aria-labelledby="hub-browse">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="label">Browse</p><h2 class="h2" id="hub-browse">Find a look by <em>what you want</em></h2></div>
+      <a class="link-arrow" href="/browse/">All filters</a>
+    </div>
+    <div class="browse-rows browse-rows--band">
+      {% for f in ["occasion", "finish", "colour", "style"] %}
+      <div class="browse-col"><p class="browse-col__label">{{ "Color" if f == "colour" else (f | capitalize) }}</p><ul class="chips">{% for t in taxonomy[f] %}{% set c = (collections.looks | withFacet(f, t.slug)).length %}{% if c %}<li><a class="chip" href="/browse/{{ f }}/{{ t.slug }}/">{% if f == "colour" and t.swatch %}<span class="dot" style="background:{{ t.swatch }}" aria-hidden="true"></span>{% endif %}{{ t.label }} <span class="chip__count">{{ c }}</span></a></li>{% endif %}{% endfor %}</ul></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if sp.key == "press-ons" and solver %}
+<section class="solver-band solver-band--hub" aria-labelledby="hub-solver">
+  <div class="wrap solver-band__grid">
+    <div><p class="label">Problem Solver</p><h2 class="h2" id="hub-solver">What's going wrong?</h2><a class="btn" href="{{ solver.url }}">See every fix</a></div>
+    <ul class="solver-list">{%- for pr in solver.data.problems %}<li><a href="{{ solver.url }}#{{ pr.id }}">{{ pr.symptom }}<span aria-hidden="true"> →</span></a></li>{% endfor %}</ul>
+  </div>
+</section>
+{% endif %}
+
+<section class="section wrap" aria-labelledby="hub-list">
+  <h2 class="h2" id="hub-list">{{ "Latest edits" if sp.key == "nail-ideas" else ("Guides" if sp.key == "press-ons" else "Ideas") }}</h2>
+  {% if list.length %}
+  <div class="card-grid card-grid--3">
+    {% asyncEach a in list %}{% articleCard a %}{% endeach %}
+  </div>
+  {% else %}
+  <p class="empty-state">New articles are on the way.</p>
+  {% endif %}
+</section>
+
+{% if sp.key == "nail-ideas" %}
+<section class="section wrap" aria-labelledby="shape-title">
+  <div class="section-head"><h2 class="h2" id="shape-title">By shape</h2><a class="link-arrow" href="/browse/">All filters</a></div>
+  <ul class="shape-row">
+    {% set facetKey = "shape" %}{% asyncEach t in taxonomy.shape %}{% shapeTile t, facetKey %}{% endeach %}
+  </ul>
+</section>
+{% endif %}
+
+{% if sp.faq.length %}
+<section class="faq faq--hub wrap" aria-labelledby="hub-faq">
+  <h2 class="h2" id="hub-faq">Questions</h2>
+  {% for item in sp.faq %}<details class="faq__item"{% if loop.first %} open{% endif %}><summary>{{ item.q }}</summary><p>{{ item.a }}</p></details>{% endfor %}
+</section>
+{% endif %}
+<div class="section"></div>

@@ -1,0 +1,11 @@
+{
+  "name": "The Tip Sheet",
+  "short_name": "Tip Sheet",
+  "icons": [
+    { "src": "/assets/brand/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/brand/favicon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#7A1F3D",
+  "background_color": "#FAF6F1",
+  "display": "browser"
+}

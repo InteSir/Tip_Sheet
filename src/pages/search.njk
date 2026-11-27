@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+title: Search
+description: "Search nail ideas, press-on guides and holiday decor on The Tip Sheet."
+permalink: /search/
+pagefindUI: true
+---
+<header class="page-head wrap-narrow">
+  <p class="label">Search</p>
+  <h1 class="h1">Find a <em>look</em></h1>
+  <p class="lede">Try "almond", "red French tip", "short" or "glue".</p>
+</header>
+<div class="search-page wrap-narrow">
+  <div id="search"></div>
+  <noscript><p class="search-fallback">Search needs JavaScript. You can also <a href="/browse/">browse by shape, colour and style</a>.</p></noscript>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    if (!window.PagefindUI) {
+      document.getElementById("search").innerHTML = '<p class="search-fallback">Search is available on the built site. Run <code>npm run build</code> first. You can also <a href="/browse/">browse by filter</a>.</p>';
+      return;
+    }
+    const ui = new PagefindUI({ element: "#search", showSubResults: true, showImages: false, resetStyles: false,
+      translations: { placeholder: "Search nail ideas" } });
+    const q = new URLSearchParams(location.search).get("q");
+    if (q) ui.triggerSearch(q);
+  });
+</script>

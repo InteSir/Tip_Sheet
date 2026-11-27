@@ -1,0 +1,53 @@
+<section class="follow wrap" aria-labelledby="follow-title">
+  <p class="label">Keep the ideas</p>
+  <h2 id="follow-title" class="h2">Save the looks you love</h2>
+  <p>Tap <strong>Save</strong> on any look to keep it on this device{% if site.social.pinterest %}, or follow us on Pinterest for new ideas every week{% endif %}.</p>
+  <div class="btn-row btn-row--center">
+    {% if site.social.pinterest %}<a class="btn" href="{{ site.social.pinterest }}" rel="me noopener" target="_blank">Follow on Pinterest</a>{% endif %}
+    <a class="btn btn--outline" href="/saved/">Your saved looks</a>
+    <a class="btn btn--outline" href="/feed.xml">RSS feed</a>
+  </div>
+  {# Newsletter block renders only when site.newsletter.enabled is true (not configured yet) #}
+  {% if site.newsletter.enabled and site.newsletter.action %}{% include "partials/newsletter.njk" %}{% endif %}
+</section>
+<footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div class="site-footer__brand">
+      <a href="/" aria-label="{{ site.name }}, home"><img src="/assets/brand/logo-primary-reversed.svg" alt="{{ site.name }}" width="244" height="64" loading="lazy"></a>
+      <p>{{ site.strapline }}</p>
+    </div>
+    <nav aria-label="Explore">
+      <p class="label">Explore</p>
+      <ul>
+        <li><a href="/nail-ideas/">Nail Ideas</a></li>
+        <li><a href="/press-on-nails/">Press-On Hub</a></li>
+        <li><a href="/press-on-nails/problem-solver/">Problem Solver</a></li>
+        <li><a href="/home-decor/">Home &amp; Decor</a></li>
+        <li><a href="/browse/">Browse all looks</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="About">
+      <p class="label">About</p>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/editorial-standards/">Editorial standards</a></li>
+        <li><a href="/how-we-use-ai-images/">How we use AI images</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Legal">
+      <p class="label">Legal</p>
+      <ul>
+        <li><a href="/affiliate-disclosure/">Affiliate disclosure</a></li>
+        <li><a href="/privacy-policy/">Privacy policy</a></li>
+        <li><a href="/terms/">Terms</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap site-footer__legal">
+    <p>The Tip Sheet has no affiliate links and doesn't recommend specific products. <a href="/affiliate-disclosure/">Affiliate disclosure</a>.</p>
+    <p>Nail images marked "AI-generated inspiration" are illustrations of a design idea, not photos of any product.</p>
+    <p>© {{ year }} {{ site.name }}</p>
+  </div>
+</footer>

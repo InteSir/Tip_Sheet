@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+---
+<header class="page-head wrap-narrow">
+  {% if kicker %}<p class="label">{{ kicker }}</p>{% endif %}
+  <h1 class="h1">{{ heading or title }}{% if headingAccent %} <em>{{ headingAccent }}</em>{% endif %}</h1>
+  {% if lede %}<p class="lede">{{ lede }}</p>{% endif %}
+  {% if lastUpdated %}<p class="legal-meta">Last updated: {{ lastUpdated }}</p>{% endif %}
+</header>
+<div class="page-body wrap-narrow" data-pagefind-body>
+  {% if legalTemplate %}<p class="notice"><strong>Template text.</strong> This page is a starting draft, not legal advice. Review it, fill in the bracketed details, and update it when you join an affiliate program or add tools.</p>{% endif %}
+  <div class="prose">{{ content | safe }}</div>
+</div>
