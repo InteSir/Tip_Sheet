@@ -1,0 +1,234 @@
+---
+layout: layouts/base.njk
+---
+{%- set sectionInfo = site.sections[section] -%}
+{%- set facetsHere = { shape: shape, length: length, colour: color, finish: finish, style: style, occasion: occasion, looks: looks } | facets -%}
+{%- set productIds = { quickPicks: quickPicks, looks: looks, extraProducts: extraProducts, problems: problems } | articleProducts -%}
+{%- set isDecor = section == "home-decor" -%}
+{%- set lookList = looks | withAnchors -%}
+{%- set groupsHere = lookList | groupLooks(groups) -%}
+
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"Article","headline":{{ title | json | safe }},"description":{{ description | json | safe }},
+     "datePublished":"{{ page.date | isoDate }}","dateModified":"{{ (updated or page.date) | isoDate }}",
+     "image":[{{ ogImage | absUrl | json | safe }}],
+     "author":{"@type":"Organization","name":{{ site.name | json | safe }},"url":{{ site.url | json | safe }}},
+     "publisher":{"@type":"Organization","name":{{ site.name | json | safe }},"logo":{"@type":"ImageObject","url":"{{ site.url }}/assets/brand/favicon-512.png"}},
+     "mainEntityOfPage":{{ page.url | absUrl | json | safe }}},
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"{{ site.url }}/"},
+      {"@type":"ListItem","position":2,"name":{{ sectionInfo.label | json | safe }},"item":{{ sectionInfo.url | absUrl | json | safe }}},
+      {"@type":"ListItem","position":3,"name":{{ title | json | safe }}}
+    ]}{% if faq %},
+    {"@type":"FAQPage","mainEntity":[{% asyncEach item in faq %}{"@type":"Question","name":{{ item.q | json | safe }},"acceptedAnswer":{"@type":"Answer","text":{{ item.a | json | safe }}}}{% if not loop.last %},{% endif %}{% endeach %}]}{% endif %}
+  ]}</script>
+
+<article class="article" data-pagefind-body>
+  <header class="article-header wrap-narrow">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span> <a href="{{ sectionInfo.url }}">{{ sectionInfo.label }}</a>
+    </nav>
+    {% if kicker %}<p class="kicker">{{ kicker }}</p>{% endif %}
+    <h1 class="article-title">{{ headline or title }}{% if headlineAccent %} <em>{{ headlineAccent }}</em>{% endif %}</h1>
+    <p class="dek">{{ description }}</p>
+    <p class="article-meta">
+      By {{ site.name }} · <time datetime="{{ (updated or page.date) | isoDate }}">{% if updated %}Updated {% endif %}{{ (updated or page.date) | readableDate }}</time> · {{ content | readingTime }} min read{% if lookList.length > 3 %} · {{ lookList.length }} {{ "ideas" if isDecor else "looks" }}{% endif %}
+    </p>
+    {% if productIds.length %}
+    <p class="disclosure-note">
+      {%- if productIds | anyAffiliate -%}
+        This page contains affiliate links: if you buy through them we may earn a commission, at no extra cost to you.
+      {%- elif productIds | anyLinked -%}
+        Product links go to the retailer. We haven't joined any affiliate program yet, so we earn nothing from them.
+      {%- else -%}
+        Product cards on this page are sample slots until real, verified products are added.
+      {%- endif %} <a href="/editorial-standards/">Our editorial standards</a>
+    </p>
+    {% endif %}
+  </header>
+
+  <figure class="article-hero wrap-wide">
+    {% img hero, "(min-width: 1000px) 940px, 100vw", "ratio-hero", "eager", [480, 800, 1200, 1600] %}
+    {% if images[hero].ai %}<figcaption class="ai-caption ai-caption--hero wrap-narrow">AI-generated inspiration, not a product photo. <a href="/how-we-use-ai-images/">How we use AI images</a></figcaption>{% endif %}
+  </figure>
+
+  {% if lookList.length > 5 %}
+  <details class="jump wrap-narrow" data-pagefind-ignore>
+    <summary>Jump to a look <span class="jump__count">{{ lookList.length }}</span></summary>
+    <ol class="jump__list">
+      {%- for l in lookList %}<li><a href="#{{ l.anchor }}">{{ l.title }}</a></li>{% endfor %}
+    </ol>
+  </details>
+  {% endif %}
+
+  {% if quickPicks and site.shopping %}
+  <aside class="quick-picks wrap-narrow" aria-labelledby="quick-picks-title">
+    <h2 id="quick-picks-title" class="label">Quick picks</h2>
+    <ul>
+      {%- for q in quickPicks %}{% set qp = q.product | product %}
+      <li><span>{{ q.label }}</span> <a href="#product-{{ qp.id }}">{{ qp.name }} <span aria-hidden="true">→</span></a></li>
+      {%- endfor %}
+    </ul>
+  </aside>
+  {% endif %}
+
+  <div class="prose wrap-narrow">
+    {{ content | safe }}
+  </div>
+
+  {% if steps %}
+  <section class="steps wrap-narrow" aria-labelledby="steps-title">
+    <h2 class="h2" id="steps-title">Step by step</h2>
+    <ol class="steps__list">
+      {%- for s in steps %}<li><h3>{{ s.title }}</h3><p>{{ s.text }}</p></li>{% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+
+  {% if bedTypes %}
+  <section id="bed-types" class="bed-types wrap" aria-labelledby="beds-title">
+    <h2 class="h2" id="beds-title">Sizing by nail-bed type</h2>
+    <div class="bed-grid">
+      {%- for b in bedTypes %}
+      <article class="bed-card" id="{{ b.id }}">
+        <h3>{{ b.label }}</h3>
+        {% if b.signs %}<p class="bed-card__signs"><strong>Signs:</strong> {{ b.signs }}</p>{% endif %}
+        <ul>{% for t in b.tips %}<li>{{ t }}</li>{% endfor %}</ul>
+      </article>
+      {%- endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if problems %}
+  <section class="problems wrap" aria-labelledby="problems-title">
+    <h2 class="h2" id="problems-title">Find your problem</h2>
+    <ul class="problem-index" data-pagefind-ignore>
+      {%- for pr in problems %}<li><a class="chip" href="#{{ pr.id }}">{{ pr.symptom }}</a></li>{% endfor %}
+    </ul>
+    {% asyncEach pr in problems %}
+    <article class="problem" id="{{ pr.id }}" aria-labelledby="{{ pr.id }}-t">
+      <p class="label">Problem {{ loop.index }}</p>
+      <h3 class="problem__title" id="{{ pr.id }}-t">{{ pr.symptom }}</h3>
+      <p class="problem__quick"><strong>Quick fix:</strong> {{ pr.quickFix }}</p>
+      <div class="problem__cols">
+        <div><h4>Likely causes</h4><ul>{% for c in pr.causes %}<li>{{ c }}</li>{% endfor %}</ul></div>
+        <div><h4>How to fix it</h4><ol>{% for f in pr.fixes %}<li>{{ f }}</li>{% endfor %}</ol></div>
+      </div>
+      {% if pr.conflict %}<p class="problem__conflict">{{ pr.conflict }}</p>{% endif %}
+      {% set prp = pr | problemProducts %}{% if site.shopping and prp.length %}<div class="problem__products">{% asyncEach pid in prp %}{% productCard pid, "inline", "Useful for this" %}{% endeach %}</div>{% endif %}
+      {% if pr.seeAlso %}<p class="problem__see"><a class="link-arrow" href="{{ pr.seeAlso }}">Related guide</a></p>{% endif %}
+    </article>
+    {% endeach %}
+  </section>
+  {% endif %}
+
+  {% if checklist %}
+  <section class="checklist-groups wrap-narrow" aria-labelledby="cl-title">
+    <h2 class="h2" id="cl-title">The checklist</h2>
+    {%- for g in checklist %}
+    <h3 class="checklist__group">{{ g.group }}</h3>
+    <ul class="checklist">{% for it in g.items %}<li><span class="box" aria-hidden="true"></span>{{ it }}</li>{% endfor %}</ul>
+    {%- endfor %}
+  </section>
+  {% endif %}
+
+  {% if lookList.length %}
+  <div class="looks{% if isDecor %} looks--decor{% endif %}">
+    {% asyncEach grp in groupsHere %}
+    <section class="look-group wrap-narrow" {% if grp.id %}id="{{ grp.id }}" aria-labelledby="{{ grp.id }}-h"{% else %}aria-label="Looks"{% endif %}>
+      {% if grp.title %}<header class="look-group__head"><h2 class="h2" id="{{ grp.id }}-h">{{ grp.title }}</h2>{% if grp.intro %}<p>{{ grp.intro }}</p>{% endif %}</header>{% endif %}
+      <div class="look-grid">
+        {% asyncEach look in grp.looks %}
+        {% set sim = collections.looks | similarLooks(look, page.url) %}
+        {% lookFull look, look.num, page.url, title, sim %}
+        {% endeach %}
+      </div>
+    </section>
+    {% endeach %}
+  </div>
+  {% endif %}
+
+  {% if outro %}<div class="prose wrap-narrow">{{ outro | safe }}</div>{% endif %}
+
+  {% if completeTheVibe %}
+  <section class="vibe wrap" aria-labelledby="vibe-title">
+    <div class="section-head"><h2 class="h2" id="vibe-title">Complete the vibe</h2><p class="section-intro">{{ "Nail looks in the same palette" if isDecor else "Small-space decor in the same palette" }}</p></div>
+    <div class="vibe-grid">
+      {% asyncEach v in completeTheVibe | limit(3) %}
+      <a class="vibe-card" href="{{ v.url }}">{% img v.image, "(min-width: 1024px) 300px, 45vw", "ratio-1", "lazy", [400, 800] %}<span class="vibe-card__t">{{ v.title }}</span>{% if v.text %}<span class="vibe-card__d">{{ v.text }}</span>{% endif %}</a>
+      {% endeach %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if site.shopping and productIds.length > 1 and not problems %}
+  <section class="shop-the-look wrap" aria-labelledby="shop-title">
+    <h2 id="shop-title" class="h2">{{ "The ideas, in one place" if isDecor else "Every product on this page" }}</h2>
+    <p class="section-intro">No prices or star ratings here: they change too often. Check the current details at the retailer.</p>
+    <div class="product-grid">
+      {% asyncEach id in productIds %}{% productCard id, "grid", "" %}
+      {% endeach %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if section == "nail-ideas" %}
+  <aside class="fixit wrap-narrow" aria-labelledby="fixit-title">
+    <p class="label">Press-On Hub</p>
+    <h2 class="h2" id="fixit-title">Wearing these as press-ons?</h2>
+    <p>Lifting by day two is usually prep or fit, not the glue. Our <a href="/press-on-nails/problem-solver/">Problem Solver</a> diagnoses it by where the nail fails, and the <a href="/press-on-nails/sizing/">sizing guide</a> has a printable chart.</p>
+  </aside>
+  {% endif %}
+
+  {% if faq %}
+  <section class="faq wrap-narrow" aria-labelledby="faq-title">
+    <h2 id="faq-title" class="h2">FAQ</h2>
+    {% asyncEach item in faq %}
+    <details class="faq__item"{% if loop.first %} open{% endif %}>
+      <summary>{{ item.q }}</summary>
+      <p>{{ item.a }}</p>
+    </details>
+    {% endeach %}
+  </section>
+  {% endif %}
+
+  {% if sources %}
+  <section class="sources wrap-narrow" aria-labelledby="src-title">
+    <h2 id="src-title" class="label">Sources</h2>
+    <ul>{% for s in sources %}<li><a href="{{ s.url }}" rel="noopener" target="_blank">{{ s.label }}</a></li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  <footer class="article-footer wrap-narrow">
+    <p class="label">Filed under</p>
+    <ul class="chips">
+      {% asyncEach key in ["occasion", "finish", "style", "shape", "length", "colour"] %}
+        {% asyncEach v in facetsHere[key] %}<li><a class="chip" href="/browse/{{ key }}/{{ v }}/">{{ v | taxLabel(key) }}</a></li>{% endeach %}
+      {% endeach %}
+    </ul>
+  </footer>
+</article>
+
+<section class="pin-block wrap-narrow" aria-labelledby="pin-title">
+  <img class="pin-block__img" src="{{ pinImage }}" width="1000" height="1500" loading="lazy"
+       alt="Pinterest graphic: {{ title }}" data-pin-description="{{ title }} | {{ site.name }}">
+  <div>
+    <h2 id="pin-title" class="h2">Save this for later</h2>
+    <p>Pin it to your board so you can find these {{ "ideas" if isDecor else "looks" }} again, or tap Save on any single look.</p>
+    <a class="btn btn--outline" target="_blank" rel="noopener"
+       href="https://www.pinterest.com/pin/create/button/?url={{ page.url | absUrl | urlencode }}&media={{ pinImage | absUrl | urlencode }}&description={{ (title + ' | ' + site.name) | urlencode }}">Save to Pinterest<span class="visually-hidden"> (opens in a new tab)</span></a>
+  </div>
+</section>
+
+{% set relatedArticles = collections.articles | related(page.url) %}
+{% if relatedArticles.length %}
+<section class="related wrap" aria-labelledby="related-title" data-pagefind-ignore>
+  <h2 id="related-title" class="h2">Read next</h2>
+  <div class="card-grid card-grid--3">
+    {% asyncEach a in relatedArticles %}{% articleCard a %}{% endeach %}
+  </div>
+</section>
+{% endif %}

@@ -1,0 +1,361 @@
+{
+  "_README": "Publishing calendar. status: planned (not written) | drafted | ready | published. Dates are suggested, not commitments. `npm run dashboard` turns this plus publishing/pins/*.json into dashboard/index.html (local only, never deployed).",
+  "items": [
+    {
+      "slug": "new-years-eve-nails",
+      "title": "New Year's Eve Nails: 22 Gold, Silver & Chrome Ideas",
+      "url": "/nail-ideas/new-years-eve-nails/",
+      "type": "seasonal-pillar",
+      "publishDate": "2026-11-30",
+      "status": "ready",
+      "pinPackage": "new-years-eve-nails"
+    },
+    {
+      "slug": "press-on-problem-solver",
+      "title": "Press-On Problem Solver: Why Your Press-Ons Lift, Pop Off or Hurt (and the Fix)",
+      "url": "/press-on-nails/problem-solver/",
+      "type": "evergreen-hub",
+      "publishDate": "2026-11-26",
+      "status": "ready",
+      "pinPackage": "press-on-problem-solver"
+    },
+    {
+      "slug": "press-on-sizing-guide",
+      "title": "Press-On Nail Sizing Guide (+ Printable Chart)",
+      "url": "/press-on-nails/sizing/",
+      "type": "evergreen-guide",
+      "publishDate": "2026-11-26",
+      "status": "ready",
+      "pinPackage": "press-on-sizing-guide"
+    },
+    {
+      "slug": "press-on-prep-checklist",
+      "title": "Press-On Prep Checklist: The Routine for Longer Wear (Printable)",
+      "url": "/press-on-nails/prep-checklist/",
+      "type": "evergreen-guide",
+      "publishDate": "2026-11-26",
+      "status": "ready",
+      "pinPackage": "press-on-prep-checklist"
+    },
+    {
+      "slug": "winter-nail-colors-2026-27",
+      "title": "Winter Nail Colors 2026–27",
+      "url": "",
+      "type": "seasonal",
+      "publishDate": "2026-12-07",
+      "status": "planned",
+      "pinPackage": "",
+      "notes": "Not written. Research first: brown/caramel rising, burgundy, plum, icy blue; 4–5 Pins. Pins go to the 5 launch boards (mostly Nail Ideas & Nail Inspiration / Short Nail Designs); add a Winter Nails board around this date only if Intesar wants it."
+    },
+    {
+      "slug": "valentines-day-nails-2027",
+      "title": "Valentine's Day Nails 2027: 30 Ideas",
+      "url": "",
+      "type": "seasonal-pillar",
+      "publishDate": "2026-12-14",
+      "status": "planned",
+      "pinPackage": "",
+      "notes": "Not written. Longest seasonal runway; 6–8 Pins staggered from mid-December to early February on the launch boards, plus a Valentine's Nails board when Intesar is ready. Don't force 30 if fewer are genuinely distinct. No numerals on nails. No product promises during the soft launch."
+    },
+    {
+      "slug": "removing-press-ons-without-damage",
+      "title": "Removing Press-Ons Without Damage",
+      "url": "",
+      "type": "evergreen-guide",
+      "publishDate": "2026-12-21",
+      "status": "planned",
+      "pinPackage": "",
+      "notes": "Not written. Builds on the Problem Solver's removal section; 3–5 Pins to Press-On Nails & Tutorials."
+    },
+    {
+      "slug": "red-christmas-nail-ideas",
+      "title": "Red Christmas Nail Ideas: French Tips, Bows & Velvet",
+      "url": "/nail-ideas/red-christmas-nail-ideas/",
+      "type": "inspiration",
+      "publishDate": "2026-11-24",
+      "status": "published-on-site-pending-deploy",
+      "pinPackage": "red-christmas-nail-ideas"
+    },
+    {
+      "slug": "short-christmas-nail-designs",
+      "title": "Short Christmas Nail Designs That Still Feel Festive",
+      "url": "/nail-ideas/short-christmas-nail-designs/",
+      "type": "inspiration",
+      "publishDate": "2026-11-23",
+      "status": "published-on-site-pending-deploy",
+      "pinPackage": "short-christmas-nail-designs"
+    },
+    {
+      "slug": "christmas-coquette-nails",
+      "title": "Christmas Coquette Nails: Bows, Pearls & Soft Pink",
+      "url": "/nail-ideas/christmas-coquette-nails/",
+      "type": "inspiration",
+      "publishDate": "2026-11-22",
+      "status": "published-on-site-pending-deploy",
+      "pinPackage": "christmas-coquette-nails"
+    },
+    {
+      "slug": "best-press-on-nails",
+      "title": "Best Press-On Nails: How to Choose the Right Set",
+      "url": "/press-on-nails/best-press-on-nails/",
+      "type": "guide",
+      "publishDate": "2026-11-21",
+      "status": "published-on-site-pending-deploy",
+      "pinPackage": "best-press-on-nails"
+    },
+    {
+      "slug": "how-to-make-press-on-nails-last",
+      "title": "How to Make Press-On Nails Last (Step-by-Step)",
+      "url": "/press-on-nails/how-to-make-press-on-nails-last/",
+      "type": "guide",
+      "publishDate": "2026-11-20",
+      "status": "published-on-site-pending-deploy",
+      "pinPackage": "how-to-make-press-on-nails-last"
+    },
+    {
+      "slug": "small-apartment-christmas-decor",
+      "title": "Small Apartment Christmas Decor: Cozy Ideas for Tiny Spaces",
+      "url": "/home-decor/small-apartment-christmas-decor/",
+      "type": "decor",
+      "publishDate": "2026-11-19",
+      "status": "published-on-site-pending-deploy",
+      "pinPackage": "small-apartment-christmas-decor"
+    }
+  ],
+  "pinterest": {
+    "launchBoards": [
+      "Nail Ideas & Nail Inspiration",
+      "Short Nail Designs",
+      "Press-On Nails & Tutorials",
+      "Chrome & Cat-Eye Nails",
+      "Renter-Friendly Small-Space Decor"
+    ],
+    "laterSeasonalBoards": [
+      "Christmas Nails",
+      "New Year's Nails",
+      "Winter Nails",
+      "Valentine's Nails"
+    ],
+    "note": "Soft launch (decided 26 Nov 2026): 5 boards to start (replaces the earlier 8-board plan). Seasonal boards are added later when Intesar is ready; each Pin's laterSeasonalBoard says where to also save it. ~5 original Pins per week, never all at once. Pin dates assume a first Pin on Mon 30 Nov 2026 and shift with the site's go-live date. No product promises until monetisation is live.",
+    "boards": [
+      {
+        "name": "Nail Ideas & Nail Inspiration",
+        "status": "launch",
+        "description": "Nail ideas and nail inspiration for every season: French tips, bows, chrome, cat-eye and jewel tones, each with its shape, length and finish. Save a look you love, then see how to get it as a press-on, at home or at the salon. Seasonal edits for Christmas, New Year's Eve and Valentine's Day, plus easy everyday manicures. Images are AI-generated inspiration, clearly labelled.",
+        "keywords": [
+          "nail ideas",
+          "nail inspiration",
+          "nail designs",
+          "nail art ideas",
+          "christmas nails",
+          "new years eve nails",
+          "french tip nails",
+          "bow nails",
+          "coquette nails"
+        ],
+        "feeds": [
+          "/nail-ideas/red-christmas-nail-ideas/",
+          "/nail-ideas/christmas-coquette-nails/",
+          "/nail-ideas/new-years-eve-nails/ (#gold-and-champagne, #party-ready-easy-wins, look anchors)",
+          "/browse/ pages",
+          "future: Winter colours (7 Dec), Valentine's (14 Dec)"
+        ],
+        "examples": [
+          "Red Christmas nails: French tips, bows & velvet",
+          "Christmas coquette nails, four ways",
+          "Gold & champagne New Year's Eve nails",
+          "Easy DIY New Year's nails"
+        ]
+      },
+      {
+        "name": "Short Nail Designs",
+        "status": "launch",
+        "description": "Short nail designs that still feel special: short Christmas nails, short almond and squoval ideas, chrome French tips and easy party manicures that need no extensions. Practical inspiration for short natural nails, busy hands and short press-ons, with the shape, finish and how to get each look. Images are AI-generated inspiration, clearly labelled.",
+        "keywords": [
+          "short nail designs",
+          "short nails",
+          "short nail ideas",
+          "short christmas nails",
+          "short almond nails",
+          "short square nails",
+          "short nye nails",
+          "short french tip nails"
+        ],
+        "feeds": [
+          "/nail-ideas/short-christmas-nail-designs/",
+          "/nail-ideas/new-years-eve-nails/ (short looks, e.g. #nye-silver-chrome-french)",
+          "/nail-ideas/red-christmas-nail-ideas/ (#red-christmas-candy-cane-stripes-on-a-milky-base)",
+          "/browse/ length: short"
+        ],
+        "examples": [
+          "Short Christmas nails that still feel special",
+          "Short NYE nails that shine",
+          "Champagne chrome from Christmas Eve to New Year's",
+          "Short red Christmas nails"
+        ]
+      },
+      {
+        "name": "Press-On Nails & Tutorials",
+        "status": "launch",
+        "description": "Press-on nail tutorials and honest how-tos: how to apply press-on nails so they last, a printable size chart, prep checklists, glue vs adhesive tabs, and fixes for lifting, pop-offs and sore sides. Brand-neutral, beginner-friendly press-on tips, with safety notes on gel glue and nail allergies.",
+        "keywords": [
+          "press on nails",
+          "press on nails tutorial",
+          "how to apply press on nails",
+          "press on nail tips",
+          "press on nail size chart",
+          "press on nails popping off",
+          "press on nail glue",
+          "press on nails for beginners"
+        ],
+        "feeds": [
+          "/press-on-nails/problem-solver/ (problem anchors)",
+          "/press-on-nails/sizing/ (#chart, bed types)",
+          "/press-on-nails/prep-checklist/ (#checklist)",
+          "/press-on-nails/how-to-make-press-on-nails-last/",
+          "/press-on-nails/best-press-on-nails/",
+          "future: Removing press-ons without damage (21 Dec)"
+        ],
+        "examples": [
+          "Why your press-ons pop off (and the fix)",
+          "Free printable press-on size chart",
+          "Printable prep checklist",
+          "Is UV gel glue safe under press-ons?",
+          "Glue or tabs?"
+        ]
+      },
+      {
+        "name": "Chrome & Cat-Eye Nails",
+        "status": "launch",
+        "description": "Chrome nails and cat-eye nails: glazed pearl chrome, champagne and silver chrome, disco-ball mosaic, velvet, polka-dot, goth and aurora cat-eye. Inspiration for every length, with the shape, finish and how each magnetic or chrome look is done with press-ons, at home or at the salon. Images are AI-generated inspiration, clearly labelled.",
+        "keywords": [
+          "chrome nails",
+          "cat eye nails",
+          "glazed nails",
+          "pearl chrome nails",
+          "silver chrome nails",
+          "velvet nails",
+          "magnetic nails",
+          "aurora cat eye nails"
+        ],
+        "feeds": [
+          "/nail-ideas/new-years-eve-nails/ (#silver-disco-and-chrome, #cat-eye-after-dark, chrome & cat-eye look anchors)",
+          "/nail-ideas/short-christmas-nail-designs/ (#short-christmas-glazed-pearl-chrome)",
+          "/press-on-nails/best-press-on-nails/ (#best-press-best-cat-eye-set, #best-press-best-chrome-set)",
+          "/browse/finish/ chrome & cat-eye pages"
+        ],
+        "examples": [
+          "Disco ball chrome nails",
+          "Cat-eye nails for NYE: polka dot, goth, aurora",
+          "Glazed pearl chrome on short nails"
+        ]
+      },
+      {
+        "name": "Renter-Friendly Small-Space Decor",
+        "status": "launch",
+        "description": "Renter-friendly small-space decor for apartments and tiny homes: cozy Christmas corners, ribbon garlands on the window, tabletop and pencil trees, and decorating ideas that hang without nails or holes. Simple seasonal styling that keeps the floor clear and the deposit safe. Images are AI-generated inspiration, clearly labelled.",
+        "keywords": [
+          "small space decor",
+          "renter friendly decor",
+          "small apartment decor",
+          "apartment christmas decor",
+          "small apartment christmas",
+          "tabletop christmas tree",
+          "cozy apartment",
+          "christmas window decor"
+        ],
+        "feeds": [
+          "/home-decor/small-apartment-christmas-decor/ (#ribbon-garland, #tabletop-tree, #pencil-tree)",
+          "future Home & Decor articles (winter, Valentine's, small-space)"
+        ],
+        "examples": [
+          "Small apartment Christmas decor: cozy ideas for tiny spaces",
+          "A ribbon garland on the window",
+          "Trees for tiny spaces"
+        ]
+      },
+      {
+        "name": "Christmas Nails",
+        "status": "later",
+        "description": "Christmas nails for every length and style: red French tips with bows, coquette pink and pearls, candy cane stripes, forest green and gold, and short festive manicures. Holiday nail inspiration with the shape, finish and how to get each look. Images are AI-generated inspiration, clearly labelled.",
+        "keywords": [
+          "christmas nails",
+          "holiday nails",
+          "red christmas nails",
+          "christmas nail designs",
+          "short christmas nails",
+          "coquette christmas nails"
+        ],
+        "feeds": [
+          "red-christmas-nail-ideas",
+          "short-christmas-nail-designs",
+          "christmas-coquette-nails"
+        ],
+        "examples": [
+          "All Pins with laterSeasonalBoard = Christmas Nails"
+        ],
+        "when": "Add for Christmas 2027 (create by late Aug 2027, before the 1–14 Sep 2027 publishing window), or earlier if Intesar wants it this December."
+      },
+      {
+        "name": "New Year's Nails",
+        "status": "later",
+        "description": "New Year's Eve nails in gold, silver and chrome: champagne French tips, disco-ball mosaics, black and gold foil, cat-eye after dark and midnight jewel tones. Party nail ideas for short and long nails, with how to get each look. Images are AI-generated inspiration, clearly labelled.",
+        "keywords": [
+          "new years eve nails",
+          "nye nails",
+          "new years nails",
+          "gold and silver nails",
+          "party nails",
+          "champagne nails"
+        ],
+        "feeds": [
+          "new-years-eve-nails"
+        ],
+        "examples": [
+          "All Pins with laterSeasonalBoard = New Year's Nails"
+        ],
+        "when": "Add when Intesar is ready (this December or for NYE 2027)."
+      },
+      {
+        "name": "Winter Nails",
+        "status": "later",
+        "description": "Winter nail colors and ideas: burgundy, plum, chocolate brown and caramel, icy blue chrome, velvet and milky white. Cozy, wearable winter manicures with the shape, finish and how to get each look. Images are AI-generated inspiration, clearly labelled.",
+        "keywords": [
+          "winter nails",
+          "winter nail colors",
+          "burgundy nails",
+          "brown nails",
+          "icy blue nails",
+          "velvet nails"
+        ],
+        "feeds": [
+          "winter-nail-colors-2026-27 (planned 7 Dec)"
+        ],
+        "examples": [
+          "Winter nail colours article Pins (not written yet)"
+        ],
+        "when": "Optional, around 7 Dec when the Winter colours article exists."
+      },
+      {
+        "name": "Valentine's Nails",
+        "status": "later",
+        "description": "Valentine's Day nails: soft pink and red, hearts, bows, French tips with a twist and chrome. Romantic nail ideas for short and long nails, with the shape, finish and how to get each look. Images are AI-generated inspiration, clearly labelled.",
+        "keywords": [
+          "valentines nails",
+          "valentines day nails",
+          "pink and red nails",
+          "heart nails",
+          "valentine nail designs",
+          "coquette nails"
+        ],
+        "feeds": [
+          "valentines-day-nails-2027 (planned 14 Dec)"
+        ],
+        "examples": [
+          "Valentine's pillar Pins (not written yet)"
+        ],
+        "when": "Around mid-December with the Valentine's pillar; Pins staggered to early February."
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+---
+layout: layouts/page.njk
+title: Contact
+heading: "Say"
+headingAccent: "hello"
+kicker: "Contact"
+lede: "Questions, corrections or collaboration ideas? Send a note and we'll get back to you."
+description: "Contact The Tip Sheet with questions, corrections or collaboration ideas."
+permalink: /contact/
+---
+{# Netlify Forms: Netlify detects this form at deploy time (free tier). No backend needed. #}
+<form class="form" name="contact" method="POST" action="/contact/thanks/" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="contact">
+  <p class="hp"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+  <div>
+    <label for="c-name">Name</label>
+    <input id="c-name" name="name" type="text" autocomplete="name" required>
+  </div>
+  <div>
+    <label for="c-email">Email</label>
+    <input id="c-email" name="email" type="email" autocomplete="email" required>
+  </div>
+  <div>
+    <label for="c-topic">Topic</label>
+    <select id="c-topic" name="topic">
+      <option>General question</option>
+      <option>Correction</option>
+      <option>Brand or collaboration</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div>
+    <label for="c-message">Message</label>
+    <textarea id="c-message" name="message" required></textarea>
+  </div>
+  <p class="form-hint">We only use your details to reply. See our <a href="/privacy-policy/">privacy policy</a>.</p>
+  <div><button class="btn" type="submit">Send message</button></div>
+</form>

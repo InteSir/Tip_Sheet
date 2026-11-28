@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+title: Browse Nail Ideas by Shape, Length, Colour, Finish & Occasion
+description: "Filter nail inspiration by shape (almond, square, oval), length, color, finish (chrome, cat-eye, velvet, jelly), style and occasion."
+permalink: /browse/
+---
+<header class="page-head wrap page-head--center">
+  <p class="label">Browse</p>
+  <h1 class="h1">Find your <em>next set</em></h1>
+  <p class="lede">Every nail look on the site, sorted by shape, length, color, finish, style and occasion.</p>
+</header>
+
+{% asyncEach facet in taxonomy.facets %}
+<section class="browse-facet wrap" id="{{ facet.key }}" aria-labelledby="facet-{{ facet.key }}">
+  <div class="section-head">
+    <h2 class="h2" id="facet-{{ facet.key }}">By {{ facet.label | lower }}</h2>
+  </div>
+  {% if facet.key == "shape" %}
+  <ul class="shape-row">
+    {% set facetKey = "shape" %}{% asyncEach t in taxonomy.shape %}{% shapeTile t, facetKey %}{% endeach %}
+  </ul>
+  {% else %}
+  <ul class="chips">
+    {% asyncEach t in taxonomy[facet.key] %}
+    {%- set count = (collections.looks | withFacet(facet.key, t.slug)).length -%}
+    <li><a class="chip" href="/browse/{{ facet.key }}/{{ t.slug }}/">{{ t.label }}{% if count %} <span class="chip__count">{{ count }}<span class="visually-hidden"> looks</span></span>{% endif %}</a></li>
+    {% endeach %}
+  </ul>
+  {% endif %}
+</section>
+{% endeach %}

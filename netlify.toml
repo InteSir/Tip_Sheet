@@ -1,0 +1,87 @@
+# Netlify configuration (free plan). Netlify reads this automatically.
+# Netlify runs this on every push to the production branch: it installs the
+# packages in package-lock.json, builds the site into _site, then runs the
+# site check. If the check finds a broken link or missing alt text, the
+# build fails and the previous version of the site stays live.
+[build]
+  command = "npm run netlify"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Long cache for fingerprint-free but rarely changing static assets
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# ---------- Redirects (v2 navigation, 26 Nov 2026) ----------
+# Guides merged into the Press-On Hub; Holiday Home renamed Home & Decor.
+[[redirects]]
+  from = "/guides/how-to-make-press-on-nails-last/"
+  to = "/press-on-nails/how-to-make-press-on-nails-last/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guides/*"
+  to = "/press-on-nails/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guides"
+  to = "/press-on-nails/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/holiday-home/*"
+  to = "/home-decor/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/holiday-home"
+  to = "/home-decor/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/browse/style/chrome/"
+  to = "/browse/finish/chrome/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/browse/style/cat-eye/"
+  to = "/browse/finish/cat-eye/"
+  status = 301
+  force = true
+
+# v3 soft launch: "How we choose products" became the editorial standards page
+[[redirects]]
+  from = "/how-we-choose-products/"
+  to = "/editorial-standards/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-we-choose-products"
+  to = "/editorial-standards/"
+  status = 301
+  force = true

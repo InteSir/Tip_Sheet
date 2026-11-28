@@ -1,0 +1,54 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: browsePages
+  size: 1
+  alias: bp
+permalink: "/browse/{{ bp.facet }}/{{ bp.slug }}/"
+eleventyComputed:
+  title: "{{ bp.label }} Nail Ideas & Designs"
+  description: "{{ bp.intro }} Browse {{ bp.label | lower }} nail designs with the shape, finish and three ways to get each look."
+---
+{%- set looks = collections.looks | withFacet(bp.facet, bp.slug) -%}
+{%- set arts = collections.articles | withFacet(bp.facet, bp.slug) -%}
+<header class="page-head wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/browse/">Browse</a> <span aria-hidden="true">/</span> <a href="/browse/#{{ bp.facet }}">{{ bp.facetLabel }}</a></nav>
+  <h1 class="h1">{{ bp.label }} <em>nail ideas</em></h1>
+  <p class="lede">{{ bp.intro }}{% if bp.count %} {{ bp.count }} look{{ "s" if bp.count != 1 }} so far, each linking to its full Look Card.{% endif %}</p>
+</header>
+
+<div class="filter-bar">
+  <div class="wrap">
+    <ul class="chips" aria-label="Other {{ bp.facetLabel | lower }} options">
+      {% asyncEach t in taxonomy[bp.facet] %}<li><a class="chip" href="/browse/{{ bp.facet }}/{{ t.slug }}/"{% if t.slug == bp.slug %} aria-current="page"{% endif %}>{{ t.label }}</a></li>{% endeach %}
+    </ul>
+  </div>
+</div>
+
+<section class="wrap" aria-labelledby="looks-title">
+  <h2 class="visually-hidden" id="looks-title">Looks</h2>
+  {% if looks.length %}
+  <div class="card-grid card-grid--4">
+    {% asyncEach look in looks %}{% lookCard look %}{% endeach %}
+  </div>
+  {% else %}
+  <p class="empty-state">No {{ bp.label | lower }} looks yet. New ideas are added every week. <a href="/nail-ideas/">See all nail ideas</a>.</p>
+  {% endif %}
+</section>
+
+{% if arts.length %}
+<section class="section wrap" aria-labelledby="arts-title">
+  <h2 class="h2" id="arts-title">Articles featuring {{ bp.label | lower }}</h2>
+  <div class="card-grid card-grid--3">
+    {% asyncEach a in arts %}{% articleCard a %}{% endeach %}
+  </div>
+</section>
+{% endif %}
+
+<section class="section wrap" aria-labelledby="more-title">
+  <h2 class="h2" id="more-title">Keep browsing</h2>
+  {% asyncEach facet in taxonomy.facets %}{% if facet.key != bp.facet %}
+  <p class="label" style="margin-top:18px">{{ facet.label }}</p>
+  <ul class="chips">{% asyncEach t in taxonomy[facet.key] %}<li><a class="chip" href="/browse/{{ facet.key }}/{{ t.slug }}/">{{ t.label }}</a></li>{% endeach %}</ul>
+  {% endif %}{% endeach %}
+</section>

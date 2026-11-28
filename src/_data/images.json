@@ -1,0 +1,273 @@
+{
+  "_README": "Alt text and source for every image in src/images. ai:true = AI-generated inspiration: it is captioned 'AI-generated inspiration, not a product photo' wherever it appears with a look, and is never used as a product photo. placeholder:true shows a small 'AI image' tag while site.placeholderMode is on. Real product photos only go in products.json (image + imageUsageStatus: approved) once you have permission.",
+  "hero-red-christmas.jpg": {
+    "alt": "Hand with medium almond nails in glossy cherry red with red French tips and tiny white bows, resting on ivory linen",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "chrome-short.jpg": {
+    "alt": "Hand with short squoval nails in pearly glazed chrome holding a cream coffee cup",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "coquette-set.jpg": {
+    "alt": "Flat lay of pale pink almond press-on nails with white bows and pearls on a cream card beside a pink satin ribbon",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "holiday-apartment.jpg": {
+    "alt": "Cozy small apartment corner with a lit Christmas tree with red bows, a ribbon garland on the window and a cream armchair",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "french-almond.jpg": {
+    "alt": "Hand with long almond milky nude nails and fine white French tips beside a pearl earring on ivory fabric",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "new-years-gold.jpg": {
+    "alt": "Hand with short square champagne-gold chrome nails holding the stem of a coupe glass",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "burgundy-cateye.jpg": {
+    "alt": "Hand with medium oval burgundy cat eye nails resting on a cream knit sweater",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "red-french-set.jpg": {
+    "alt": "Flat lay of almond press-on nails with nude base, red French tips and white bows on a cream card",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "short-christmas-green.jpg": {
+    "alt": "Hand with short squoval nails alternating forest green and red with a small gold star accent, on a cream knit blanket",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "candy-cane-short.jpg": {
+    "alt": "Hand with short round milky white nails with thin red candy cane stripes holding a mug of hot cocoa",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "coquette-hand.jpg": {
+    "alt": "Hand with sheer pink almond nails decorated with small red velvet bows and pearls, holding a pink satin ribbon",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "press-on-kit.jpg": {
+    "alt": "Flat lay of press-on nail tools on linen: nail file, cuticle pusher, adhesive tabs, nail glue, prep pad and nude press-on nails",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "decor-ribbon-garland.jpg": {
+    "alt": "Apartment window decorated with a red velvet ribbon garland and dried orange slices above candles and a mini tree",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "decor-tabletop-tree.jpg": {
+    "alt": "Small tabletop Christmas tree in a woven basket with warm lights and red bows on a side table",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "press-on-row.jpg": {
+    "alt": "Four unbranded press-on nail sets on cream cards: milky French, glossy red, pearl chrome and burgundy cat eye",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "velvet-bow-red-set.jpg": {
+    "alt": "Flat lay of short square press-on nails in deep red with green and gold accent nails beside a pine sprig",
+    "placeholder": true,
+    "source": "AI-generated placeholder",
+    "ai": true
+  },
+  "nye-01.jpg": {
+    "alt": "Hand resting on an ivory silk scarf beside a gold watch, short rounded nails in milky nude with a thin champagne glitter French tip",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-02.jpg": {
+    "alt": "Hand holding a champagne coupe at a party, short square nails in mirror champagne-gold chrome",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-03.jpg": {
+    "alt": "Hand with a gold cuff on black velvet, oval nails in glossy black with fine gold foil veining",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-04.jpg": {
+    "alt": "Hand on a linen napkin beside an espresso cup, short nude nails each with one thin gold line",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-05.jpg": {
+    "alt": "Hand on marble beside an Art Deco cocktail glass, almond nails with black chevron tips edged in gold",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-06.jpg": {
+    "alt": "Fingers around a champagne flute, short sheer nails with gold glitter dots like rising bubbles",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-07.jpg": {
+    "alt": "Hand holding a small mirror ball, short nails in a silver chrome disco mosaic",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-08.jpg": {
+    "alt": "Hand touching a silver necklace against a grey sweater, short almond nails with silver chrome French tips",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-09.jpg": {
+    "alt": "Hand resting on white faux fur, almond nails in milky white pearl chrome",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-10.jpg": {
+    "alt": "Hand holding a glass of rosé beside a pink ribbon, short nails in sheer pink jelly with a glazed sheen",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-11.jpg": {
+    "alt": "Hand resting on a red velvet dress, short almond nails in deep red velvet cat-eye",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-12.jpg": {
+    "alt": "Two hands around a mug of hot cocoa, almond nails in pink shimmer with small brown polka dots",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-13.jpg": {
+    "alt": "Hand with a silver ring on a black leather jacket, short square nails in black-cherry cat-eye",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-14.jpg": {
+    "alt": "Hand raised against a night city sky, oval nails in aurora cat-eye shifting violet, blue and pink",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-15.jpg": {
+    "alt": "Hand on a taupe wool coat, almond nails split diagonally into gold and black cat-eye",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-16.jpg": {
+    "alt": "Hand holding a lit sparkler, short square midnight navy nails with a silver starburst accent nail",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-17.jpg": {
+    "alt": "Hand holding red wine by candlelight, short oval nails in deep plum velvet",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-18.jpg": {
+    "alt": "Hand on an ivory satin pouch, almond nails with burgundy chrome French tips and one crystal bow",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-19.jpg": {
+    "alt": "Hand on emerald velvet beside a gold candle holder, short emerald velvet nails with one gold chrome accent",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-20.jpg": {
+    "alt": "Hand holding a glass of cranberry punch by a snowy window, short nails in sheer cranberry jelly",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-21.jpg": {
+    "alt": "Hand holding a pale blue knit mitten in the snow, short nails with icy blue chrome French tips and a tiny snowflake",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-22.jpg": {
+    "alt": "Hand with stacked mixed-metal rings on a sequinned top, short nails alternating gold and silver chrome",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-hero.jpg": {
+    "alt": "Two hands clinking champagne coupes, one with gold chrome almond nails and one with silver chrome",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nye-silver-satin.jpg": {
+    "alt": "Hand with silver chrome almond nails resting on black satin with scattered gold confetti",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 26 Nov 2026)"
+  },
+  "nw-sweater-mug-champagne.jpg": {
+    "alt": "Hand in a cream cable-knit sleeve holding a latte, short almond nails in champagne chrome",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nw-flatlay-nye-sets.jpg": {
+    "alt": "Flat lay of five New Year's Eve press-on looks on linen with a glass of champagne and gold ribbon",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nw-moodboard-marble-gold.jpg": {
+    "alt": "Moodboard of nude and gold marble nails with marble, gold leaf and pearl textures and five shade swatches",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nw-hair-burgundy-cateye.jpg": {
+    "alt": "Woman in a black satin top tucking her hair behind her ear, almond nails in burgundy velvet cat-eye",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  },
+  "nw-collage-winter-edit.jpg": {
+    "alt": "Four-photo collage of winter nails: red almond, gold glitter ombre, pink bow coquette and milky nude",
+    "placeholder": true,
+    "ai": true,
+    "source": "AI-generated inspiration (Muse image tool, 27 Nov 2026)"
+  }
+}
